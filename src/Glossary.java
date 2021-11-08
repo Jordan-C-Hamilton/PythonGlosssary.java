@@ -1,3 +1,7 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.Objects;
 
 public class Glossary {
@@ -10,10 +14,11 @@ public class Glossary {
         term = "bug";
         definition = "an error in the program";
     }
-    public Glossary( int ChapterOfTerm,String NameOfTerm, String DefinitionOfTerm){
-        this.chapter = ChapterOfTerm;
-        this.term = NameOfTerm;
-        this.definition = DefinitionOfTerm;
+    public Glossary( String line){
+        String[] parts = line.split(",");
+        chapter = Integer.parseInt(parts[0]);
+        term = parts[1];
+        definition = parts[2];
     }
 
     public int getChapter() {
@@ -57,10 +62,55 @@ public class Glossary {
 
     @Override
     public String toString() {
-        return "Glossary{" +
-                "chapter=" + chapter +
-                ", term='" + term + '\'' +
-                ", definition='" + definition + '\'' +
-                '}';
+        System.out.println(    "ch." + chapter +
+                ", term: '" + term + '\'' +
+                ", definition: '" + definition + '\''
+        );
+
+        return null;
+    }
+
+    @BeforeEach
+    void setUp() {
+    }
+
+    @AfterEach
+    void tearDown() {
+    }
+
+    @Test
+    void testGetChapter() {
+    }
+
+    @Test
+    void testGetTerm() {
+    }
+
+    @Test
+    void testGetDefinition() {
+    }
+
+    @Test
+    void testSetChapter() {
+    }
+
+    @Test
+    void testSetTerm() {
+    }
+
+    @Test
+    void testSetDefinition() {
+    }
+
+    @Test
+    void testEquals() {
+    }
+
+    @Test
+    void testHashCode() {
+    }
+
+    @Test
+    void testToString() {
     }
 }
