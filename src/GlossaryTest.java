@@ -16,7 +16,6 @@ public class GlossaryTest {
         System.out.println("Welcome to the Glossary Test program.");
         System.out.println("Please enter your name.");
         String name = myAns.nextLine();
-        //commenceTest();
 
         {
             try {
@@ -38,8 +37,8 @@ public class GlossaryTest {
                 e.printStackTrace();
             }
         }
-        //System.out.println(pythonInfo);
         commenceTest(pythonInfo);
+
     }
     public static boolean questionGiver(ArrayList<Glossary> pythonList){
         Random rand = new Random();
@@ -62,6 +61,16 @@ public class GlossaryTest {
         }
         return number;
     }
+    public static ArrayList<Glossary> quizGenerator(int ChapterGiven, ArrayList<Glossary> pythonInfo){
+        ArrayList<Glossary> chapterQuiz = new ArrayList<>();
+        for (int i = 0; i < pythonInfo.size(); i++) {
+            Glossary info = pythonInfo.get(i);
+            if(ChapterGiven == info.getChapter()){
+                chapterQuiz.add(info);
+            }
+        }
+        return chapterQuiz;
+    }
     public static String commenceTest(ArrayList<Glossary> pythonInfo){
         int result = 0;
         System.out.println("Would you like to take a test?");
@@ -70,10 +79,13 @@ public class GlossaryTest {
         String reply = myAns.nextLine();
         if(reply.equalsIgnoreCase("y")){
             System.out.println("Commencing test:");
+            System.out.println("What chapter would you like to be tested on?");
+            int chapter = myAns.nextInt();
+            myAns.nextLine();
+            ArrayList<Glossary> quizMaterial = quizGenerator(chapter,pythonInfo);
             int numOfQuestions = 0;
             while(numOfQuestions < 4) {
-                //questionGiver(pythonInfo);
-                result = score(questionGiver(pythonInfo));
+                result = score(questionGiver(quizMaterial));
                 numOfQuestions = numOfQuestions + 1;
                 System.out.println("num. of questions: " + numOfQuestions + "\nScore: " + result);
             }
@@ -86,11 +98,6 @@ public class GlossaryTest {
         }
         String thankYou = "Thank you for taking the test.Goodbye!";
         return thankYou;
-    }
-    public static ArrayList<Glossary> quizGenerator(int Chapter){
-        ArrayList<Glossary> chapterQuiz = new ArrayList<>();
-        return quizGenerator(Chapter);
-
     }
 
 }
