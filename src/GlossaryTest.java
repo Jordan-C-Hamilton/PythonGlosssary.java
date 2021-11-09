@@ -54,13 +54,7 @@ public class GlossaryTest {
             return false;
         }
     }
-    public static int score(boolean questionAnswer){
-        int number = 0;
-        if (questionAnswer){
-            number ++;
-        }
-        return number;
-    }
+
     public static ArrayList<Glossary> quizGenerator(int ChapterGiven, ArrayList<Glossary> pythonInfo){
         ArrayList<Glossary> chapterQuiz = new ArrayList<>();
         for (int i = 0; i < pythonInfo.size(); i++) {
@@ -85,7 +79,11 @@ public class GlossaryTest {
             ArrayList<Glossary> quizMaterial = quizGenerator(chapter,pythonInfo);
             int numOfQuestions = 0;
             while(numOfQuestions < 4) {
-                result = score(questionGiver(quizMaterial));
+                int number = 0;
+                if(questionGiver(quizMaterial)){
+                    number += 25;
+                    result += number;
+                }
                 numOfQuestions = numOfQuestions + 1;
                 //System.out.println("num. of questions: " + numOfQuestions + "\nScore: " + result);
             }
