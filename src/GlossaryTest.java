@@ -88,6 +88,11 @@ public class GlossaryTest {
                 //System.out.println("num. of questions: " + numOfQuestions + "\nScore: " + result);
             }
             System.out.println("num. of questions: " + numOfQuestions + "\nScore: " + result);
+            if(result >= 75){
+                System.out.println("Congratulations! You passed!");
+            }else{
+                System.out.println("Sorry you failed. Better luck next time.");
+            }
         }else if(reply.equalsIgnoreCase("n")){
             System.out.println("Feel free to come back when you are ready.");
         }else{
