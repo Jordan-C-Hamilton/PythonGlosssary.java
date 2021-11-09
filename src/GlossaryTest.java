@@ -54,10 +54,10 @@ public class GlossaryTest {
             return false;
         }
     }
-    public static int score(boolean questionScore){
+    public static int score(boolean questionAnswer){
         int number = 0;
-        if (questionScore == true){
-            number+= 1;
+        if (questionAnswer){
+            number ++;
         }
         return number;
     }
@@ -71,7 +71,7 @@ public class GlossaryTest {
         }
         return chapterQuiz;
     }
-    public static String commenceTest(ArrayList<Glossary> pythonInfo){
+    public static void commenceTest(ArrayList<Glossary> pythonInfo){
         int result = 0;
         System.out.println("Would you like to take a test?");
         System.out.println("Please enter (Y)es to take the test.");
@@ -87,17 +87,15 @@ public class GlossaryTest {
             while(numOfQuestions < 4) {
                 result = score(questionGiver(quizMaterial));
                 numOfQuestions = numOfQuestions + 1;
-                System.out.println("num. of questions: " + numOfQuestions + "\nScore: " + result);
+                //System.out.println("num. of questions: " + numOfQuestions + "\nScore: " + result);
             }
-            System.out.println(result);
+            System.out.println("num. of questions: " + numOfQuestions + "\nScore: " + result);
         }else if(reply.equalsIgnoreCase("n")){
-            String neglect = "Return when you feel that you are ready.";
-            return neglect;
+            System.out.println("Feel free to come back when you are ready.");
         }else{
             System.out.println("That is not a valid answer.");
         }
-        String thankYou = "Thank you for taking the test.Goodbye!";
-        return thankYou;
+        System.out.println("Thank you for participating. GoodBye!");
     }
 
 }
